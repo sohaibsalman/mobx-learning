@@ -23,7 +23,14 @@ const MoviesList = () => {
               <Item.Extra>
                 <Label>{movie.genre}</Label>
                 <Button content="View" floated="right" color="blue" />
-                <Button content="Delete" floated="right" color="red" />
+                <Button
+                  content="Delete"
+                  floated="right"
+                  color="red"
+                  onClick={() => {
+                    moviesStore.deleteMovie(movie.guid);
+                  }}
+                />
               </Item.Extra>
             </Item.Content>
           </Item>
