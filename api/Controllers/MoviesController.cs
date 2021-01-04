@@ -51,7 +51,7 @@ namespace api.Controllers
             };
 
             await _context.Movies.AddAsync(newMovie);
-            int result = _context.SaveChanges();
+            int result = await _context.SaveChangesAsync();
 
             if (result > 0)
                 return Ok();
@@ -59,6 +59,20 @@ namespace api.Controllers
             return BadRequest();
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var movieInDb = await _context.Movies.SingleOrDefaultAsync(m => m.Guid == id);
+
+            if (movieInDb != null)
+            {
+                _context.Remove(movieInDb);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+
+            return BadRequest();
+        }
 
     }
 }
