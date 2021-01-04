@@ -1,15 +1,15 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import MoviesForm from './MoviesForm';
+import { Grid } from 'semantic-ui-react';
 import MoviesList from './MoviesList';
 
 const MoviesDashboard = () => {
   return (
-    <div>
-      <h1>Movies</h1>
-      <MoviesForm />
-      <MoviesList />
-    </div>
+    <Grid>
+      <Grid.Column width={16}>
+        <MoviesList />
+      </Grid.Column>
+    </Grid>
   );
 };
 
