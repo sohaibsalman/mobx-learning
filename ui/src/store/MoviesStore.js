@@ -2,6 +2,8 @@ import { createContext } from 'react';
 import { makeAutoObservable } from 'mobx';
 import axios from 'axios';
 
+const url = 'https://localhost:5001/api/movies';
+
 class MoviesStore {
   movies = [];
 
@@ -10,13 +12,13 @@ class MoviesStore {
   }
 
   loadMovies = async () => {
-    console.log('api');
-    const { data } = await axios.get('https://localhost:5001/api/movies');
+    const { data } = await axios.get(url);
     this.movies = data;
   };
 
   addMovie = async (movie) => {
     this.movies.push(movie);
+    await axios.post(url, movie);
   };
 
   deleteMovie = async (id) => {

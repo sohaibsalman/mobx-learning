@@ -18,21 +18,21 @@ namespace api
                         Guid = Guid.NewGuid(),
                         Name = "Avengers Endgame",
                         Genre = "Action",
-                        Year = 2019
+                        Year = "2019"
                     },
                      new Movie
                     {
                         Guid = Guid.NewGuid(),
                         Name = "Inception",
                         Genre = "Thriller",
-                        Year = 2010
+                        Year = "2010"
                     },
                      new Movie
                     {
                         Guid = Guid.NewGuid(),
                         Name = "The Matrix",
                         Genre = "Sci Fi",
-                        Year = 1999
+                        Year = "1999"
                     },
                 };
 
