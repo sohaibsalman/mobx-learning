@@ -22,6 +22,7 @@ class MoviesStore {
   };
 
   deleteMovie = async (id) => {
+    axios.delete(`${url}/${id}`);
     const movies = this.movies.filter((m) => m.guid !== id);
     this.movies = movies;
   };

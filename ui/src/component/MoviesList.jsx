@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Button, Item, Label, Segment } from 'semantic-ui-react';
 import MoviesStore from '../store/MoviesStore';
@@ -6,6 +7,7 @@ import MoviesStore from '../store/MoviesStore';
 const MoviesList = () => {
   const moviesStore = useContext(MoviesStore);
   const { movies } = moviesStore;
+  const history = useHistory();
 
   useEffect(() => {
     moviesStore.loadMovies();
@@ -22,7 +24,14 @@ const MoviesList = () => {
               <Item.Description></Item.Description>
               <Item.Extra>
                 <Label>{movie.genre}</Label>
-                <Button content="View" floated="right" color="blue" />
+                <Button
+                  content="View"
+                  floated="right"
+                  color="blue"
+                  onClick={() => {
+                    history.push(`/movies/${movie.guid}`);
+                  }}
+                />
                 <Button
                   content="Delete"
                   floated="right"

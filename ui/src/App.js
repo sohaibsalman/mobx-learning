@@ -9,6 +9,7 @@ import MoviesDashboard from './component/MoviesDashboard';
 import MovieForm from './component/MovieForm';
 import Navbar from './component/Navbar';
 import { Container } from 'semantic-ui-react';
+import MovieDetails from './component/MovieDetails';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route path="/movies" component={MoviesDashboard} exact />
+            <Route path="/movies/:id" component={MovieDetails} />
             <Route path="/movies/new" component={MovieForm} exact />
             <Redirect from="/" to="/movies" />
           </Switch>
