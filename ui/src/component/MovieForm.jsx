@@ -11,7 +11,7 @@ const initialFormState = {
   genre: '',
   year: '',
   imageSrc: defaultImage,
-  // imageFile: null,
+  imageFile: null,
 };
 
 const MovieForm = () => {

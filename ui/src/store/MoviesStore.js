@@ -18,7 +18,13 @@ class MoviesStore {
 
   addMovie = async (movie) => {
     this.movies.push(movie);
-    await axios.post(url, movie);
+    const formData = new FormData();
+    formData.append('name', movie.name);
+    formData.append('genre', movie.genre);
+    formData.append('year', movie.year);
+    formData.append('imageName', movie.imageName);
+    formData.append('imageFile', movie.imageFile);
+    await axios.post(url, formData);
   };
 
   deleteMovie = async (id) => {
