@@ -32,7 +32,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> Details(Guid id)
+        public async Task<ActionResult<MovieDto>> Details(Guid id)
         {
             var movieInDb = await _context.Movies.SingleOrDefaultAsync(m => m.Guid == id);
 
@@ -46,7 +46,7 @@ namespace api.Controllers
                     ImageName = movieInDb.ImageName,
                     ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, movieInDb.ImageName),
                 };
-                return movieInDb;
+                return dto;
             }
 
             return NotFound();
