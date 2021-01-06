@@ -11,5 +11,6 @@ namespace api.Models
         public string Year { get; set; }
         public string ImageName { get; set; }
         public IFormFile ImageFile { get; set; }
+        public string ImageSrc { get; set; }
     }
 }

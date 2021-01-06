@@ -38,6 +38,14 @@ namespace api.Controllers
 
             if (movieInDb != null)
             {
+                MovieDto dto = new MovieDto
+                {
+                    Guid = movieInDb.Guid,
+                    Name = movieInDb.Name,
+                    Genre = movieInDb.Genre,
+                    ImageName = movieInDb.ImageName,
+                    ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, movieInDb.ImageName),
+                };
                 return movieInDb;
             }
 
@@ -86,7 +94,8 @@ namespace api.Controllers
             string imageName = new string(Path.
                                             GetFileNameWithoutExtension(imageFile.FileName).
                                             Take(10).
-                                            ToArray());
+                                            ToArray()).Replace(" ", "-");
+
             imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
             var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
 
